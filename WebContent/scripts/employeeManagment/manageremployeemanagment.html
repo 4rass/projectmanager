@@ -1,0 +1,264 @@
+
+<div>
+	<h1 align="center">Employee Managment</h1>
+	<div class="container div-table">
+
+		<table data-toggle="table" class="table" id="table2" cellpadding="3"
+			cellspacing="0">
+
+			<div class="form-group col-xs-4 ">
+				<div class="inner-addon right-addon">
+					<i class="glyphicon glyphicon-search"></i> <input
+						class="form-control " placeholder="Search here.." type="text"
+						data-ng-model="searchItems">
+				</div>
+			</div>
+
+			
+
+			<div>
+				<button  type="button"
+					class="btn btn-info btn-md div-buttons" data-toggle="modal"
+					data-target="#employeesForm" data-ng-click="showEmployeeForm()">
+					<b> <span class="glyphicon glyphicon-user"></span><b>+Add New Employee</b>
+				</button>
+			</div>
+
+			<div>
+				<button type="button" class="btn btn-primary divsButtons" data-toggle="modal"
+					data-target="#associate" style="margin-right: 6px;"
+					class="btn btn-info btn-md"><b>+Associate Employee for project</b>
+				</button>
+			</div>
+
+			<thead>
+				<tr class="border-radius border-color">
+
+					<th data-field="name" data-sortable="true">EMPLOYEE NAME</th>
+					<th>LAST NAME</th>
+					<th>EMAIL</th>
+					<th>PHONE</th>
+					<th>OPTIONS</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="employee in listEmployee | filter:searchItems">
+
+					<td>{{employee.firstname}}</td>
+					<td>{{employee.lastname}}</td>
+					<td>{{employee.email}}</td>
+					<td>{{employee.phone}}</td>
+					<td align="center">
+					
+					<button class="btn btn-danger btn-xs">
+					<a data-ng-click="del(employee.id)"> <span
+							class="glyphicon glyphicon-trash"></span>
+					</a> 
+					</button>
+					
+					<button class="btn btn-primary btn-xs">
+					<a data-toggle="modal" data-target="#employeesForm"
+						data-ng-click="selectEdit(employee.id)"> <span
+							class="glyphicon glyphicon-pencil"></span>
+					</a>
+					</button>
+						<a type="button" class="btn btn-success btn-xs"
+							 data-toggle="modal" data-target="#status" data-ng-click="projectStatus1($index)">
+							  <span class="glyphicon glyphicon-info-sign"></span>
+					  </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+
+		<div class="container">
+			<div class="modal fade" id="employeesForm" role="dialog">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close dissMiss" data-dismiss="modal">&times;</button>
+							<h4 class="modal-titleE">ADD NEW EMPLOYEE :</h4>
+						</div>
+						<div class="modal-body">
+							<form id="EmployeeForm">
+								<div class="form-group">
+									<label>Employee first name:</label> <input
+										class="form-control input" type="text"
+										data-ng-model="firstname"
+										placeholder="Please enter first name:" required="required">
+								</div>
+
+
+								<div class="form-group">
+									<label>Employee last name:</label> <input type="text"
+										class="form-control input" data-ng-model="lastname"
+										placeholder="Please enter last name:" required="required">
+								</div>
+
+
+								<div class="form-group">
+									<label>Email:</label> <input type="email"
+										class="form-control input" data-ng-model="email"
+										placeholder="Please enter email:" required="required">
+								</div>
+
+								<div class="form-group">
+									<label>Phone:</label> <input class="form-control input"
+										type="text" data-ng-model="phone"
+										placeholder="Please enter phone:" required="required">
+								</div>
+
+
+								<div class="form-group userAndPass">
+									<label>User name:</label>
+									<label class="control-label"></label>
+							         <input class="form-control input"
+										type="text" data-ng-model="username"
+										placeholder="Please enter username :" required="required"> 
+								</div>
+
+								<div class="form-group userAndPass">
+									<label>Pass:</label>
+									<label class="control-label"> </label>
+							        <input class="form-control input"
+										type="text" data-ng-model="pass"
+										placeholder="Please enter pass :" required="required">
+								</div>
+
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button  class="btn btn-danger dissMiss" data-dismiss="modal">Close</button>
+							<button id="addE" class="btn btn-primary" data-ng-click="add()">Add</button>
+							<button id="updateE" class="btn btn-primary" data-ng-click="edit()">Save</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="modal fade" id="associate" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Associate work
+						for the project :</h5>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group ">
+						<div>
+							<label>Name Employee:</label> <select class="form-control"
+								data-ng-model="employeeId">
+								<option data-ng-repeat="employee in listEmployee"
+									value="{{employee.id}}">{{employee.firstname}} ,
+									{{employee.lastname}} , {{employee.email}} , {{employee.phone}}
+								</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label>Name Project:</label> <select class="form-control"
+								data-ng-model="projectId">
+								<option data-ng-repeat="project in listproject"
+									value="{{project.id}}">{{project.projectname}} ,
+									{{project.customer.companyname}} ,
+									{{project.projectmanageremail}} ,
+									{{project.projectmanagerphone}}</option>
+							</select>
+
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="submit"
+									data-ng-click="associate(employeeId,projectId)"
+									class="btn btn-primary ">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+<div id="status" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        
+        <div class="card">
+			  <img class="img-circle" src="images/Project.jpg"  alt="Avatar" style="width:100%;">
+			  
+			  <div class="container">
+			  <h2 > {{emoloyeeName}}</h2>
+			  
+			 </div>
+		</div>
+        <h2> Projects :</h2> 
+        <table class="table-hover table" id="table2">
+     	   <thead>
+	 			<tr>
+	 				<th >  <span class="glyphicon glyphicon-user"></span></th>
+	 				<th> PROJECT NAME</th>
+	        		<th> CUSTOMER</th>
+	        		<th> PROJECT STARTDATE</th>
+	        		<th>PROJECT ENDDATE</th>
+	        	</tr>
+        	</thead>
+        	<tbody>
+        		<tr data-ng-repeat="employees in employeesOfProject">
+        			<td><img src="images/images.jpg"   style="width:70%; float: left;"></td>  <!-- <--מראה שגיאה על מיקום -נכון- !!!לא ידוע!! -->
+        			<td>{{employees.project.projectname}}</td>
+        			<td>{{employees.companyname}}</td>
+        			<td>{{employees.project.startdate}}</td>  
+        			<td>{{employees.project.enddate}}</td>
+        		</tr>
+        	</tbody>
+        </table>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</div>

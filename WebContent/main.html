@@ -1,0 +1,165 @@
+<!DOCTYPE html >
+<html  data-ng-app="myApp">
+<head>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>;l
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+
+<link href="manager.css" rel="stylesheet">
+<meta charset="windows-1255">
+<title>Hour Report System</title>
+
+<script type="text/javascript" src="scripts/myApp.js"></script>
+<script  type="text/javascript" src="scripts/login/login.route.js"></script>
+<script  type="text/javascript" src="scripts/login/login.Ctrl.js"></script>
+<script  type="text/javascript" src="scripts/managerHourReport/managerHourReport.route.js"></script>
+<script  type="text/javascript" src="scripts/managerHourReport/managerHourReport.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/hourReportCustomer/hourReportCustomer.route.js"></script>
+<script type="text/javascript" src="scripts/hourReportCustomer/hourReportCustomer.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/activeProjectCustomer/activeProjectCustomer.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/activeProjectCustomer/activeProjectCustomer.route.js"></script>
+<script type="text/javascript" src="scripts/employeeManagment/employeeManagment.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/employeeManagment/employeeManagment.route.js"></script>
+<script type="text/javascript" src="scripts/activeProjectCustomer/activeProjectCustomer.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/activeProjectCustomer/activeProjectCustomer.route.js"></script>
+<script type="text/javascript" src="scripts/projectManagment/projectManagment.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/projectManagment/projectManagment.route.js"></script>
+<script type="text/javascript" src="scripts/systemSettings/systemSettings.route.js"></script>
+<script type="text/javascript" src="scripts/systemSettings/systemSettings.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/employeeHourReport/employeeHourReport.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/employeeHourReport/employeeHourReport.route.js"></script>
+<script type="text/javascript" src="scripts/employeeReportTable/employeeReportTable.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/employeeReportTable/employeeReportTable.route.js"></script>
+<script type="text/javascript" src="scripts/managerLogin/managerLogin.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/managerLogin/managerLogin.route.js"></script>
+<script type="text/javascript" src="scripts/customerManagment/customerManagment.Ctrl.js"></script>
+<script type="text/javascript" src="scripts/customerManagment/customerManagment.route.js"></script>
+
+
+</head>
+<body data-ng-controller="myAppCtrl">
+	<table class="table">
+
+		<tr>
+			<td colspan="1" class="title" >
+				<button   data-ng-click="logout()"
+					class="logbutton "  >Logout</button>
+				<button class="errorbutton" data-toggle="modal" data-target="#errorModal" >Error</button>
+				
+					
+				<lable> Hour Report App  <span class="glyphicon glyphicon-list-alt"></span></lable>
+				
+				{{ clock | date:'HH:mm:ss'}}
+			</td>
+			<td class="logo" style="display: none;"><img data-ng-click="logo()"  src="images/logo2.png"></td>
+		</tr>
+
+		<tr style="display: none; " class="menu">
+			<td colspan="6">
+				<div>
+					<table style="width: 100%;">
+						<tr class="menubtns">
+
+							<td>
+								<ul class="nav nav-tabs menu">
+									<li><a href="#!/" style="display: none;"> Login</a></li>
+									<li><a href="#!employeehourreporttable"
+										style="display: none;" class="EmployeePage">Get Hour report</a></li>
+									<li><a href="#!employeehourreportform"
+										style="display: none;" class="EmployeePage"; >Create Hour report</a></li>
+								
+								
+								
+									<li><a href="#!activproject" style="display: none;"
+										class="CustomerPage">Active Projects</a></li>
+									<li><a href="#!hourreportforcustomer"
+										style="display: none;" class="CustomerPage">Get Hour report</a></li>
+
+
+
+									<li><a href="#!systemsettings" style="display: none;"
+										class="Manager">System Settings</a></li>
+									<li><a href="#!employeemanagment" style="display: none;"
+										class="Manager">Employees Management</a></li>
+									<li><a href="#!projectmanagment" style="display: none;"
+										class="Manager">Projects Management</a></li>
+									<li><a href="#!customermanagment" style="display: none;"
+										class="Manager">Customers Management</a></li>
+									<li><a href="#!managerhourreport" style="display: none;"
+										class="Manager">Get Reports</a></li>
+									<li><a href="#!bigcustomer" style="display: none;"
+										class="Manager">Manager login</a></li>
+
+								</ul>
+							</td>
+
+						</tr>
+					</table>
+
+				</div>
+			</td>
+		</tr>
+
+		<td colspan="6">
+			<div class="divApp" data-ng-view></div>
+		</td>
+		<tr class="footer">
+			<td colspan="6"><div>
+
+
+					<footer>
+						<p>&copy; Copyright October 2017 . All Rights Reserved To Lior Asras.</p>
+					</footer>
+
+
+				</div></td>
+		</tr>
+
+
+	</table>
+
+  <div class="modal fade" id="errorModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Please report :</h4>
+        </div>
+        <div class="modal-body">
+         <div class="form-group">
+         <label for="comment">Subject:</label>
+         <textarea data-ng-model="subject" class="form-control" rows="1" id="comment"></textarea>
+      <label for="comment">Comment:</label>
+      <textarea data-ng-model="massage" class="form-control" rows="5" id="comment"></textarea>
+    </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-ng-click="errorMail()" >
+                    <i class="glyphicon glyphicon-send"></i><a>&nbsp;</a>Send report</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body >
+<script type="text/javascript">
+
+</script>
+</html>

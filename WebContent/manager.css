@@ -1,0 +1,153 @@
+body {
+	max-width : 1024px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    /* background-image: url("images/kendo-bg2-big.jpg"); */
+    background-repeat: inherit;
+    color: #000;
+}	
+
+.table {
+	border-spacing: 0px;
+    border-collapse: separate;
+	 border-radius: 20px;
+	 background-color: rgba(93, 164, 189, 0.44);  
+	 font-weight: 600; 
+	 
+}
+
+.table>tbody>tr>td {
+	padding: 6px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 0px solid ;
+}
+
+
+h{
+	font-family: Calibri;
+}
+
+.title {
+	text-align: center;
+}
+
+.menu{
+	text-align :center;
+	height: 30px;
+	background-color: #4f81bd;
+}
+
+.content{
+	
+}
+
+.nav-tabs {
+    border-bottom: 0px  ;
+}
+
+a{
+	color: #ffffff;
+}
+#table2 {
+	font-family: arial, sans-serif;
+	margin-top: 25px;
+	 border-collapse: separate;
+}
+
+#table2  tr:nth-child(even) {
+	background-color: silver;
+}
+
+#table2 th{
+	background: #4f81bd;
+	color: white;
+}
+
+ #table2 tbody tr:nth-child(odd) {
+    background: #dbe5f0;
+  }
+  #table2 tbody th, #table2 tbody tr:nth-child(even) td {
+    background: white;
+  }
+
+#table2  td, th{
+	border-top: 1px solid #ddd; 
+}
+
+.form{
+	float: right;
+	
+	margin-top: 50px;
+
+	margin-left: 50px;
+}
+
+
+.footer{
+	background-color: #b2ebf2;
+	text-align: center;
+	background-color: #4f81bd
+}
+
+
+img{
+	float: right;		
+	width: 65px;
+    margin-right: 0px;
+}
+
+
+.menubtns{
+	direction: rtl;
+}
+
+.logbutton {
+	  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	 text-align: center;
+	padding: 5px 15px;
+	text-align: center;
+	 cursor: pointer;
+	 font-size: larger;
+	 border-radius: 12px;
+	  float: left;
+	  display: none;
+}
+.errorbutton {
+	 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	 font-size: larger;
+	 text-align: center;
+	cursor: pointer;
+	padding: 5px 15px;
+	 display: inline-block;
+	 border-radius: 12px;
+	 float: left;
+	 display: none;
+}
+
+.associate{
+	text-align: center; margin-top: 5px;
+}
+
+.div-table{
+	width: 90%; float: right; margin-right: 50px;
+	
+}
+.btn-info{
+	float: right;
+}
+
+.div-buttons{
+	float: right; margin-right: 4px;
+}
+.managerhourR{
+    margin-top: 20px;
+    margin-right: 30px;
+    
+}
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+}
+.right-addon .glyphicon { right: 10px;}
+.right-addon input { padding-left: 0px; }

@@ -1,0 +1,93 @@
+
+<div >
+	<h1 align="center">Customer Hour Report :</h1>
+	<table data-toggle="table" class="table" id="table2" cellpadding="3"
+		cellspacing="0">
+		
+			<div class="form-group col-xs-4 ">
+					<div class="inner-addon right-addon">
+						<i class="glyphicon glyphicon-search"></i> <input
+							class="form-control " placeholder="Search here.." type="text"
+							data-ng-model="searchItems">
+					</div>
+			</div>
+		
+			<div>
+					<button type="button" class="btn btn-primary"
+					style="float: right; margin-right: 4px;" 
+					data-toggle="modal" data-target="#report">
+					  +Get Hour Report
+					</button>
+	     	</div>
+		<thead>
+			<tr>
+				<th>EMPLOYEE NAME</th>
+				<th>PROJECT</th>
+				<th>DATE</th>
+				<th>START DATE</th>
+				<th>END DATE</th>
+				<th>DESCRIPTION</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="employees in myData | filter:searchItems">
+
+				<td>{{employees.employee.firstname}}</td>
+				<td>{{employees.project.projectname}}</td>
+				<td>{{employees.date}}</td>
+				<td>{{employees.startdate}}</td>
+				<td>{{employees.enddate}}</td>
+				<td>{{employees.description}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+
+<div class="container">
+  
+  <div class="modal fade" id="report" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content modal-sm">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Get Hour Report</h4>
+        </div>
+        <div class="modal-body">
+        <form>
+			
+				<div class="form-group">
+					<label>Project:</label>
+					<select class="form-control"
+							data-ng-model="projectId" required="required">
+							<option  ></option>
+							<option value="{{project.id}}" data-ng-repeat="project in projectlist">
+											{{project.projectname}}
+							</option>
+					</select>
+				</div>
+
+				<div class="form-group ">
+						<label>Year and Month :</label>
+					  <input id="date" type="date"
+					class="form-control" 
+				data-ng-model="yearAndMonth" required="required">
+			</div>
+		</form>
+		
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button data-ng-click="report()" class="btn btn-primary">Get Report</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+		
+	

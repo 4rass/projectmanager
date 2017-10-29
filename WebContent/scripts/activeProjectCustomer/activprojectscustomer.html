@@ -1,0 +1,35 @@
+
+<h1 align="center">Active Projects :  {{ currentUserId }}</h1>
+<div>
+	<div style="width:100%;">
+		<table data-toggle="table" class="table" cellpadding="2"
+			cellspacing="0">
+			
+			<div class="form-group col-xs-4">
+				<input   class="form-control inputsearch"
+					 type="text" placeholder="Search here :"
+					data-ng-model="searchItems">
+			</div>
+			<thead>
+				<tr>
+
+					<th>PROJECT NAME</th>
+					<th>EMAIL</th>
+					<th>PHONE</th>
+					<th>START DATE</th>
+					<th>END DATE</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="project in Proj | filter:searchItems">
+
+					<td>{{project.projectname}}</td>
+					<td>{{project.projectmanageremail}}</td>
+					<td>{{project.projectmanagerphone}}</td>
+					<td>{{project.startdate}}</td>
+					<td>{{project.enddate}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

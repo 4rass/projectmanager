@@ -1,0 +1,288 @@
+
+<div >
+	<div>
+		<h1 align="center">Project Managment</h1>
+		<div class="container col-xs-4">
+			<!-- Modal -->
+			<div class="modal fade" id="ProjectModal" role="dialog">
+				<div class="modal-dialog modal-sm">
+
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close dissMiss" data-dismiss="modal ">&times;</button>
+							<h4 class="modal-titleP">Add New Poject :</h4>
+						</div>
+						<div class="modal-body">
+							<form id="formProjects">
+								<div class="form-group ">
+									<label>Project name :</label> 
+        						<input type="text"
+										class="form-control" style="font-style: italic" type="text"
+										data-ng-model="projectname"
+										placeholder="Please enter project name:">
+								</div>
+								<div class="form-group">
+									<label>Customer :</label>
+									<label class="control-label">
+							         	 <code>*This field required</code>
+							        </label>
+							         <select class="form-control"
+										ng-model="customer" required="required">
+											<option value="" ></option>
+										<option value="{{customer.id}}"
+											ng-repeat="customer in listCustomer" >
+											{{customer.companyname}}</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Customer P.manager :</label> <input class="form-control"
+										style="font-style: italic" type="text"
+										data-ng-model="customerprojectmanager"
+										placeholder="Please enter project managere:" required="required">
+								</div>
+
+								<div class="form-group">
+									<label>P.M mail :</label> <input type="text"
+										class="form-control" style="font-style: italic" type="text"
+										data-ng-model="projectmanageremail"
+										placeholder="Please enter project manager mail:" required="required">
+								</div>
+
+								<div class="form-group">
+									<label>P.manager phone :</label> <input type="text"
+										class="form-control" style="font-style: italic" type="email"
+										data-ng-model="projectmanagerphone"
+										placeholder="Please enter phone:" required="required">
+								</div>
+								<div class="form-group">
+									<label>Start date :</label> <input class="form-control"
+										type="date" data-ng-model="startdate" required="required">
+								</div>
+
+								<div class="form-group">
+									<label>End date:</label> <input type="date"
+										class="form-control" data-ng-model="enddate" required="required"> 
+								</div>
+
+							</form>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger dissMiss"  data-dismiss="modal">Close</button>
+							
+							<button id="addP" type="button" class="btn btn-primary"
+								data-ng-click="add()">Add</button>
+							<button id="updateP" type="button" class="btn btn-primary"
+								data-ng-click="edit()">Save</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="container div-table">
+		<table class="table" id="table2">
+
+		<div class="form-group col-xs-4 ">
+			<div class="inner-addon right-addon">
+				<i class="glyphicon glyphicon-search"></i> <input
+					class="form-control " placeholder="Search here.." type="text"
+					data-ng-model="searchItems">
+			</div>
+		</div>
+
+
+
+			<div>
+				<button   type="button"
+					class="btn btn-info  div-buttons" data-toggle="modal"
+					data-target="#ProjectModal" data-ng-click="showProjectForm()">
+					  <span class="glyphicon glyphicon-list-alt"></span>
+					<b>+Add New Project</b>
+				</button>
+			</div>
+			<div>
+				<button type="button" class="btn btn-primary divsButtons" data-toggle="modal"
+					data-target="#Associate" style="margin-right: 60px;"
+					class="btn btn-info btn-md"><b>+Associate project to Employee</b>
+				</button>
+			</div>
+			<thead>
+				<tr>
+
+					<th>PROJECT NAME</th>
+					<th>CUSTOMER</th>
+					<th>CUSTOMER P.MANAGER</th>
+					<th>P.M MAIL</th>
+					<th>P.MANAGER PHONE</th>
+					<th>START DATE</th>
+					<th>END DATE</th>
+					<th>OPTIONS</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="tr-{{project.id}}"
+					data-ng-repeat="project in listproject|filter:searchItems ">
+
+					<td>{{project.projectname}}</td>
+					<td>{{project.customer.companyname}}</td>
+					<td>{{project.customerprojectmanager}}</td>
+					<td>{{project.projectmanageremail}}</td>
+					<td>{{project.projectmanagerphone}}</td>
+					<td>{{project.startdate}}</td>
+					<td>{{project.enddate}}</td>
+					<td align="center">
+					
+					<button class="btn btn-danger btn-xs">
+					<a data-ng-click="del(project.id)">
+					 <span
+							class="glyphicon glyphicon-trash"></span>
+					</a>
+					</button>
+					
+					<button class="btn btn-primary btn-xs">
+					 <a data-toggle="modal" data-target="#ProjectModal"
+						data-ng-click="selectEdit(project.id)"> <span
+							class="glyphicon glyphicon-pencil"></span>
+					</a>
+					</button>
+					
+						<a type="button" class="btn btn-success btn-xs"
+							 data-toggle="modal" data-target="#status" data-ng-click="projectStatus1($index)">
+							  <span class="glyphicon glyphicon-info-sign"></span>
+					  </a>
+					  
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+
+
+	<div class="modal fade" id="Associate" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">
+						<b>Associate project for employee :</b>
+					</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group ">
+						<div>
+							<label> Employee name :</label> <select class="form-control"
+								data-ng-model="employeeId">
+								<option ></option>
+								<option data-ng-repeat="employee in listEmployee"
+									value="{{employee.id}}">{{employee.firstname}} ,
+									{{employee.lastname}} , {{employee.email}} , {{employee.phone}}</option>
+							</select>
+
+						</div>
+						<div class="form-group">
+							<label>Project name:</label> <select class="form-control"
+								data-ng-model="projectId">
+								<option ng-repeat="project in listproject"
+									value="{{project.id}}">{{project.projectname}} ,
+									{{project.customer.companyname}} ,
+									{{project.projectmanageremail}} ,
+									{{project.projectmanagerphone}}</option>
+							</select>
+							
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary"
+									data-ng-click="associate(employeeId,projectId)">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+<div id="status" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Start date:{{customerStartdate}} &nbsp;&nbsp; End date:{{customerEnddate}}</h4>
+      </div>
+      <div class="modal-body">
+        
+        <div class="card">
+			  <img class="img-circle" src="images/Project.jpg"  alt="Avatar" style="width:60%;">
+			  
+			  <div class="container">
+			  <h2 data-ng-model="customer.project"> {{customerProject}}</h2>
+			  
+			  <p>Company name :{{customerCompanyname}}</p>
+			   <p>Company number :{{customerCompanynumber}}</p>
+			    <p>Contact name:{{customerContactname}}</p>
+			     <p>Contact Mail :{{customerEmail}}</p>
+			      <p>Contact phone:{{customerPhone}}</p>
+			  
+			 
+			 </div>
+		</div>
+        <h2> Employees :</h2> 
+        <table class="table-hover table" id="table2">
+     	   <thead>
+	 			<tr>
+	 				<th >  <span class="glyphicon glyphicon-user"></span></th>
+	 				<th> FIRST NAME</th>
+	 			    <th> LAST NAME</th>
+	        		<th> MAIL</th>
+	        		<th> PHONE</th>
+	        	</tr>
+        	</thead>
+        	<tbody>
+        		<tr data-ng-repeat="employees in employeesOfProject">
+        			<td><img src="images/images.jpg"   style="width:70%; float: left;"></td>  <!-- <--מראה שגיאה על מיקום נכון !!!לא ידוע!! -->
+        			<td>{{employees.employee.firstname}}</td>  
+        			<td>{{employees.employee.lastname}}</td>
+        			<td>{{employees.employee.email}}</td>
+        			<td>{{employees.employee.phone}}</td>
+        		</tr>
+        	</tbody>
+        </table>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+</div>

@@ -1,0 +1,114 @@
+<h1 align="center"> Hour Reports :</h1>
+	<div class="container div-table">
+		<table data-toggle="table" class="table" id="table2" cellpadding="3" cellspacing="0">
+			<thead>
+				<tr>
+					<div class="form-group col-xs-4 ">
+						<div class="inner-addon right-addon">
+							<i class="glyphicon glyphicon-search"></i> <input
+								class="form-control " placeholder="Search here.." type="text"
+								data-ng-model="searchInReport">
+						</div>
+					</div>
+
+
+					<div>
+							<button style="float:  right;" type="button" class="btn btn-primary associateButtons" 
+								data-toggle="modal" data-target="#report">
+								<i class="glyphicon glyphicon-signal"></i>
+								  Get Hour Report
+							</button>
+					</div>
+
+				
+					<th>EMPLOYEE NAME</th>
+					<th>PROJECT NAME </th>
+					<th> DATE</th>
+					<th>START HOUR</th>
+					<th>END HOUR</th>
+					<th>DESCRIPTION</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="report in hourReportList | filter:searchInReport">
+					
+					<td>{{report.employee.firstname}}</td>
+					<td>{{report.project.projectname}}</td>
+					<td>{{report.date}}</td>
+					<td>{{report.startdate}}</td>
+					<td>{{report.enddate}}</td>
+					<td>{{report.description}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+		<div class="modal fade" id="report">
+		  <div class="modal-dialog modal-sm" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Get your report :</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		       	<form>
+								<div class="form-group ">
+									<label>Employee Name :</label>
+									<select class="form-control"
+										data-ng-model="employeeId" required="required">
+										<option value="" ></option>
+										<option value="{{employee.id}}"
+											data-ng-repeat="employee in listEmployees">
+											{{employee.firstname}} , {{employee.lastname}}</option>
+									</select>
+								</div>
+									
+								<div class="form-group ">
+									<label>Project Name :</label>
+							         <select class="form-control"
+										data-ng-model="projectId" required="required">
+										<option value="" ></option>
+										<option value="{{project.id}}"
+											data-ng-repeat="project in listProjects">
+											{{project.projectname}}
+										</option>
+									</select>
+								</div>
+								
+								
+								<div class="form-group ">
+									<label>Year and Month :</label>
+							          <input id="date" type="date"
+										class="form-control" 
+										data-ng-model="yearAndMonth" required="required">
+								</div>
+								
+
+								<div class="form-group ">
+									<label>Customer Name :</label>
+							         <select class="form-control"
+										data-ng-model="customerId" required="required">
+											<option value="" ></option>
+										<option value="{{customer.id}}"
+											data-ng-repeat="customer in listCustomers">
+											{{customer.companyname}}
+										</option>
+									</select>
+								</div>
+								
+								
+							</form>	
+						      </div>
+						      
+						      <div class="modal-footer">
+									<button class="btn btn-primary"
+									 data-ng-click="report()"> Get Report</button>
+									 <button type="button" class="btn btn-secondary"
+									  data-dismiss="modal">Close</button>
+							</div>
+							
+						    </div>
+						  </div>
+						</div>

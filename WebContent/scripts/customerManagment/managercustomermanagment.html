@@ -1,0 +1,278 @@
+
+<div >
+	
+
+		<h1 align="center">Customer Managment</h1>
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog modal-sm">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button  type="button"  class="close dissMiss" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Add new Customer :</h4>
+					</div>
+
+					<div class="modal-body">
+						<form   class="conainer" id="form">
+						
+							<div class="form-group">
+								<lable>COMPANY NAME:</lable>
+									<input type="text";
+										class="form-control input";
+										data-ng-model="companyname" 
+									placeholder=" Please enter Company name:" pattern=".{4,}" 
+									title="Four or more characters" required>
+							</div>
+
+
+							<div class="form-group">
+								<lable>COMPANY NUMBER:</lable>
+									<input type="text"
+										class="form-control input"
+											 data-ng-model="companynumber"
+									placeholder="Please enter Company number:"  pattern=".{4,}" 
+									title="Four or more characters" required>
+							</div>
+
+
+
+							<div class="form-group">
+								<lable>CONTACT NAME :</lable>
+									<input  type="text"
+										class="form-control input" 
+										data-ng-model="contactname"
+									placeholder="Please enter Contact name:"  pattern=".{4,}"
+									 title="Four or more characters" required>
+							</div>
+
+
+							<div class="form-group">
+								<lable>EMAIL :</lable>
+										<input  class="form-control input" data-ng-model="email"
+											 type="email"
+									placeholder="Please enter email:"  pattern=".{4,}"
+									 title="Four or more characters" required>
+							</div>
+
+							<div class="form-group">
+								<label>PHONE :</label>
+								 <input type="tel" class="form-control input" data-ng-model="phone"
+									placeholder="Please enter phone:"   pattern=".{4,}" 
+									title="Four or more characters" required>
+							</div>
+
+							<div class="form-group userPass">
+								<label>USER NAME :</label> 
+								<input type="text" class="form-control input" data-ng-model="username"
+									placeholder="Please enter user name:"  pattern=".{4,}" 
+									title="Four or more characters" required>
+							</div>
+
+							<div class="form-group userPass">
+								<label>PASSWORD :</label> 
+							        <input type="text" class="form-control input"
+								 data-ng-model="pass"
+									placeholder="Please enter user password:"  pattern=".{4,}" 
+									title="Four or more characters" required >
+							</div>
+							</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button"  class="btn btn-danger dissMiss" data-dismiss="modal">Close</button>
+						<button id="addC" type="submit" class="btn btn-primary" data-ng-click="add()">Add</button>
+						<button id="updateC" type="button" class="btn btn-primary" data-ng-click="edit()">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+<form style="margin-left: 400px">
+	<b>All Customers </b> <input type="radio" data-ng-model="content"
+		data-ng-value="1"> 
+		 <label>Big Customers</label> <input type="radio" data-ng-model="content"
+		data-ng-value="2">
+</form>
+
+
+
+		
+	<div data-ng-show="content == 1" class="container div-table">
+		<table class="table" id="table2"  cellpadding="3" cellspacing="0">
+			<div class="form-group col-xs-4 ">
+				<div class="inner-addon right-addon">
+					<i class="glyphicon glyphicon-search"></i> <input
+						class="form-control " placeholder="Search here.." type="text"
+						data-ng-model="searchItems" >
+				</div>
+			</div>
+
+			<div>
+			<button   type="button"class="btn btn-info btn-md divsButtons"
+			 data-toggle="modal" data-ng-click="showUserPass()"
+				data-target="#myModal" > 
+				  <span class="glyphicon glyphicon-user"></span><b>+Add New Customer</b></button>
+			</div>
+			<thead>
+				<tr>
+					<th>COMPANY NAME</th>
+					<th>COMPANY NUMBER</th>
+					<th>CONTACT NAME</th>
+					<th>EMAIL</th>
+					<th>PHONE</th>
+					<th>OPTIONS</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="tr-{{customer.id}}"
+					data-ng-repeat="customer in listcustomer| filter:searchItems">
+
+					<td>{{customer.companyname}}</td>
+					<td>{{customer.companynumber}}</td>
+					<td>{{customer.contactname}}</td>
+					<td>{{customer.email}}</td>
+					<td>{{customer.phone}}</td>
+					<td align="center">
+					
+					<button class="btn btn-danger btn-xs">
+						<a data-ng-click="del(customer.id)"> <span
+							class="glyphicon glyphicon-trash"></span>
+						</a>
+					</button>
+						
+						<button class="btn btn-primary btn-xs">
+						<a   data-toggle="modal" data-target="#myModal"
+						data-ng-click="selectEdit(customer.id)"> <span
+								class="glyphicon glyphicon-pencil"></span>
+						</a> 
+						</button>
+						
+						
+						<a type="button" class="btn btn-success btn-xs"
+							 data-toggle="modal" data-target="#status" data-ng-click="customerStatus1($index)">
+							  <span class="glyphicon glyphicon-info-sign"></span>
+					  </a>
+						
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+
+
+
+
+
+<div data-ng-show="content == 2" class="container div-table">
+		<table class="table" id="table2"  cellpadding="3" cellspacing="0">
+			<div class="form-group col-xs-4 ">
+				<div class="inner-addon right-addon">
+					<i class="glyphicon glyphicon-search"></i> <input
+						class="form-control " placeholder="Search here.." type="text"
+						data-ng-model="searchItems" >
+				</div>
+			</div>
+
+			<div>
+			<button   type="button"class="btn btn-info btn-md divsButtons"
+			 data-toggle="modal" data-ng-click="showUserPass()"
+				data-target="#myModal"><b>+Add New Customer</b></button>
+			</div>
+			<thead>
+				<tr>
+					<th>COMPANY NAME</th>
+					<th>COMPANY NUMBER</th>
+					<th>CONTACT NAME</th>
+					<th>EMAIL</th>
+					<th>PHONE</th>
+					<th>PROJECTS</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="tr-{{customer.id}}"
+					data-ng-repeat="customer in listBigCustome1| filter:searchItems">
+
+					<td>{{customer.companyname}}</td>
+					<td>{{customer.companynumber}}</td>
+					<td>{{customer.contactname}}</td>
+					<td>{{customer.email}}</td>
+					<td>{{customer.phone}}</td>
+					<td>{{customer.projectcount}}</td>
+					
+					
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+
+
+
+
+<div id="status" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Company name: &nbsp;&nbsp;{{Companyname}} </h4>
+      </div>
+      <div class="modal-body">
+        
+        <div class="card">
+			  <img class="img-circle" src="images/Project.jpg"   style="width:90%;">
+			  
+			  <div class="container">
+			 <!--  <h2 data-ng-model="customer.project"> {{customerProject}}</h2> -->
+			  
+			 <!--  <p>Project name :{{ProjectName}}</p>
+			   <p>Company name :{{Companyname}}</p>
+			    <p>Project manager:{{Customerprojectmanager}}</p>
+			     <p>Manager mail :{{customerEmail}}</p>
+			      <p>Manager phone:{{customerPhone}}</p>
+			   -->
+			 
+			 </div>
+		</div>
+        <h2> Projects & Employees:</h2> 
+        <table class="table-hover table" id="table2">
+     	   <thead>
+	 			<tr>
+	 				<th align="center" >  <span class="glyphicon glyphicon-user"></span></th>
+	 				<th> Project </th>
+	 			    <th> Employee F.NAME</th>
+	        		<th> Employee L.NAME</th>
+	        		<th> Employee Email</th>
+	        		<th> Employee Phone</th>
+	        	</tr>
+        	</thead>
+        	<tbody>
+        		<tr data-ng-repeat="employees in employeesOfCustomer">
+        			<td><img src="images/ima.jpg"   style="width:100%; float: left;"></td><!-- <--מראה שגיאה על מיקום נכון !!!לא ידוע!! -->
+        			<td>{{employees.project.projectname}}</td>
+        			<td>{{employees.employee.firstname}}</td>  
+        			<td>{{employees.employee.lastname}}</td>
+        			<td>{{employees.employee.email}}</td>
+        			<td>{{employees.employee.phone}}</td>
+        		</tr>
+        	</tbody>
+        </table>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+</div>

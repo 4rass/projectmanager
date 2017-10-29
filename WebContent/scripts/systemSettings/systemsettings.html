@@ -1,0 +1,35 @@
+<h1 align="center">System Settings :</h1>
+<div class="form-group col-xs-4" style=" margin-left: 350px">
+	<div class="form-group">
+		<label for="sel1">Select Work Hours In Days -</label><br>
+		
+		<label>Start Hour :</label>
+		 <select id="starttime">
+		</select><br>
+		
+		<label>End Hour :</label>
+		<select id="endtime">
+		</select>
+	</div>
+
+	<div class="form-group " >
+		<label>Select Work Days In Week :</label> 
+		<div >
+			<input type=checkbox id="Sunday" >Sunday<br>     
+			<input type=checkbox id="Monday">Monday<br>
+			<input type=checkbox id="Tuesday" >Tuesday<br>
+			<input type=checkbox id="Wednesday" >Wednesday<br>
+			<input type=checkbox id="Thursday" >Thursday<br>
+			<input type=checkbox  id="Friday" >Friday<br>
+			<input type=checkbox  id="Saturday">Saturday<br>
+			<div style="text-align: center;">
+				<button data-ng-click="SendDays()" type="submit" class="btn btn-primary">
+				<i class="glyphicon glyphicon-send"></i><a>&nbsp;</a> Set Days</button>
+			</div>
+		</div>
+	</div>
+	<div style="text-align: center;">
+		<button data-ng-click="setHours()" type="submit" class="btn btn-primary">
+		<i class="glyphicon glyphicon-send"></i><a>&nbsp;</a> Set hours</button>
+	</div>
+</div>

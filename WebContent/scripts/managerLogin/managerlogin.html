@@ -1,0 +1,129 @@
+<h3 align="center">
+	<b> Welcome: {{ currentUserId }}</b>
+</h3>
+
+<form style="margin-left: 300px">
+	<b>Active Projects </b> <input type="radio" data-ng-model="content"
+		data-ng-value="1"> <label>Ending Projects</label>
+		 <input type="radio" data-ng-model="content" data-ng-value="2"> 
+		 <label>Big Customers</label> <input type="radio" data-ng-model="content"
+		data-ng-value="3">
+</form>
+
+
+<div data-ng-show="content == 1" class="div-table">
+	<h3 align="center">
+		<b>Active Projects :</b>
+	</h3>
+	<table data-toggle="table" class="table" id="table2" cellpadding="3"
+		cellspacing="0">
+
+			<div class="form-group col-xs-4 ">
+			<div class="inner-addon right-addon">
+				<i class="glyphicon glyphicon-search"></i> <input
+					class="form-control " placeholder="Search here.." type="text"
+					data-ng-model="searchItemsActiveProjects">
+			</div>
+		<thead>
+			<tr>
+				<th>COMPANY NAME</th>
+				<th>COMPANY NUMBER</th>
+				<th>CONTACT NAME</th>
+				<th>EMAIL</th>
+				<th>PHONE</th>
+				<th>Active</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr
+				data-ng-repeat="customer in listCustomer| filter : searchItemsActiveProjects">
+				<td>{{customer.companyname}}</td>
+				<td>{{customer.companynumber}}</td>
+				<td>{{customer.contactname}}</td>
+				<td>{{customer.email}}</td>
+				<td>{{customer.phone}}</td>
+				<td><i class="glyphicon glyphicon-ok" style="color :green;"></i></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+<div data-ng-show="content == 2" class="div-table">
+	<h3 align="center">
+		<b>Ending Projects :</b>
+	</h3>
+
+	<table data-toggle="table" class="table" id="table2" cellpadding="3"
+		cellspacing="0">
+
+		<div class="form-group col-xs-4 ">
+			<div class="inner-addon right-addon">
+				<i class="glyphicon glyphicon-search"></i> <input
+					class="form-control " placeholder="Search here.." type="text"
+					data-ng-model="searchItemsendingProjects">
+			</div>
+			
+		<thead>
+			<tr>
+				<th>PROJECT NAME</th>
+				<th>CUSTOMER</th>
+				<th>CUSTOMER P.M</th>
+				<th>START DATE</th>
+				<th>END DATE</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr
+				data-ng-repeat="project in listPrject | filter : searchItemsendingProjects">
+				<td>{{project.projectname}}</td>
+				<td>{{project.customer.companyname}}</td>
+				<td>{{project.customerprojectmanager}}</td>
+				<td>{{project.startdate}}</td>
+				<td>{{project.enddate}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<div data-ng-show="content == 3" class="div-table">
+	<h3 align="center">
+		<b>Big Customers :</b>
+	</h3>
+	<table data-toggle="table" class="table" id="table2" cellpadding="3"
+		cellspacing="0">
+
+
+		<div class="form-group col-xs-4 ">
+			<div class="inner-addon right-addon">
+				<i class="glyphicon glyphicon-search"></i> <input
+					class="form-control " placeholder="Search here.." type="text"
+					data-ng-model="searchItemsBigcustomers">
+			</div>
+		</div>
+		<thead>
+			<tr>
+				<th>COMPANY NAME</th>
+				<th>COMPANY NUMBER</th>
+				<th>CONTACT NAME</th>
+				<th>EMAIL</th>
+				<th>PHONE</th>
+				<th>PROJECTS</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr
+				data-ng-repeat="bigcustomer in listBigCustomer | filter : searchItemsBigcustomers">
+				<td>{{bigcustomer.companyname}}</td>
+				<td>{{bigcustomer.companynumber}}</td>
+				<td>{{bigcustomer.contactname}}</td>
+				<td>{{bigcustomer.email}}</td>
+				<td>{{bigcustomer.phone}}</td>
+				<td>{{bigcustomer.projectcount}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
