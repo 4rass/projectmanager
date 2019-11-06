@@ -4,34 +4,6 @@ This is the first file in this repo.
 
 ##Website content
 
-Lior ASrasASDASD ADA ASD ASD ADS 
+Here are the files in the website
 
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-Lior ASrasASDASD ADA ASD ASD ADS 
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-Lior ASrasASDASD ADA ASD ASD ADS 
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-Lior ASrasASDASD ADA ASD ASD ADS 
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-Lior ASrasASDASD ADA ASD ASD ADS 
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-Lior ASrasASDASD ADA ASD ASD ADS 
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-Lior ASrasASDASD ADA ASD ASD ADS 
-
-Add new HTML for the project
+1. index.html
