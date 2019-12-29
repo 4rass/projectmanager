@@ -1,6 +1,6 @@
-# Projectmanager
+# Projectmanager Test Lior
 I built a project management system in a company that has projects with several customers.
- - A system which allows tracking on the amount of work on the projects for Employees/Customers/Manager.
+- A system which allows tracking on the amount of work on the projects for Employees/Customers/Manager.
 - Amount of work on hours for Employees on Android App(native).
 - Employee that work on project in customer company can report on his work.
 - Employee can sign in and can get hour report on his work from DB.
