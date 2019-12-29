@@ -6,7 +6,7 @@ I built a project management system in a company that has projects with several 
 - Employee can sign in and can get hour report on his work from DB.
 - Customer can sign in and see who work o his project, what that employee report and etc'.
 - Manager can sign in and Add/Edit/Delete - project/employee/customer/hour report.
-
+a
 All three users hava password and user,if they forgotted password they can enter their mail 
 and get the password in email that send automatic in Google Servers.
 
